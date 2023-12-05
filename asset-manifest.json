@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/treasurehunt/static/css/main.eb177608.css",
+    "main.js": "/treasurehunt/static/js/main.6364d7dd.js",
+    "static/js/787.a3a57bc5.chunk.js": "/treasurehunt/static/js/787.a3a57bc5.chunk.js",
+    "static/media/santa.png": "/treasurehunt/static/media/santa.8f7883a80b9c89f63a08.png",
+    "index.html": "/treasurehunt/index.html",
+    "main.eb177608.css.map": "/treasurehunt/static/css/main.eb177608.css.map",
+    "main.6364d7dd.js.map": "/treasurehunt/static/js/main.6364d7dd.js.map",
+    "787.a3a57bc5.chunk.js.map": "/treasurehunt/static/js/787.a3a57bc5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb177608.css",
+    "static/js/main.6364d7dd.js"
+  ]
+}
