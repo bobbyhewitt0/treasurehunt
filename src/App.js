@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 
@@ -44,7 +44,7 @@ const AppContainer = styled.div`
 function App() {
 
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
      {
       path: "/",
       element: <StarterPage/>,

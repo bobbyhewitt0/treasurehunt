@@ -55,7 +55,7 @@ const PauseIcon = styled.img`
   left:0;
   transform: translate(-16px, -50%);
   width:24px;
-  opacity:0.25;
+  // opacity:0.25;
   height:24px;
 
 `

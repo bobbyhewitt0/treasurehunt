@@ -165,7 +165,7 @@ console.log(nextAnswer, nextAnswer.revealAtDate , nextAnswer.revealAtDate > time
       <Background style={{background: 'white'}}/>
       <Heading>Santa Santos</Heading>
       <SubHeading>searching for sips</SubHeading>
-      {myScore && (!answers[myScore.correct].revealAtDate || (answers[myScore.correct].revealAtDate < time)) &&
+      {myScore && (!answers[myScore.correct].revealAtDate || (answers[myScore.correct].revealAtDate < time)) ?
         <ClueAndResponse 
           {...{
             firstClues,
@@ -182,7 +182,19 @@ console.log(nextAnswer, nextAnswer.revealAtDate , nextAnswer.revealAtDate > time
             overlay,
             onCloseOverlay
           }}
-        />
+        /> :
+
+        <Container>
+          {myScore && answers[myScore.correct].revealAtDate &&
+          <React.Fragment>
+            <p style={{textAlign:'center'}}>Your next clue will be available at:</p> 
+            <h2 style={{fontWeight:'bold', margin:'12px 0', textAlign:'center'}}>{answers[myScore.correct].revealAtHour.toString().padStart(2, "0")}:{answers[myScore.correct].revealAtMinute.toString().padStart(2, "0")}</h2> 
+            <p style={{textAlign:'center'}}>Your clock will restart then too.</p> 
+            <p style={{textAlign:'center'}}>Have a drink in the meantime</p> 
+          </React.Fragment>
+          }
+        </Container>
+
       }
 
       

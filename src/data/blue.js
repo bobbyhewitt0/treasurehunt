@@ -8,8 +8,8 @@ const data = [
 		response: "This is correct, go somewhere"
 	},
 	{
-		revealAtHour: 23,
-		revealAtMinute: 1,
+		revealAtHour: 12,
+		revealAtMinute: 0,
 		answer: "Bush",
 		response: "This is correct, go somewhere"
 	},
