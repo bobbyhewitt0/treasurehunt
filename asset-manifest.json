@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/treasurehunt/static/css/main.dfa56f0c.css",
-    "main.js": "/treasurehunt/static/js/main.49796abc.js",
+    "main.js": "/treasurehunt/static/js/main.3feea519.js",
     "static/js/787.a3a57bc5.chunk.js": "/treasurehunt/static/js/787.a3a57bc5.chunk.js",
     "static/media/bg.png": "/treasurehunt/static/media/bg.2b3034a0dc48e3985d4c.png",
     "static/media/confetti.png": "/treasurehunt/static/media/confetti.01247f898cb7c59966c5.png",
@@ -10,11 +10,11 @@
     "static/media/Rene Bieder - Campton Medium.otf": "/treasurehunt/static/media/Rene Bieder - Campton Medium.680294cec099d13fc227.otf",
     "index.html": "/treasurehunt/index.html",
     "main.dfa56f0c.css.map": "/treasurehunt/static/css/main.dfa56f0c.css.map",
-    "main.49796abc.js.map": "/treasurehunt/static/js/main.49796abc.js.map",
+    "main.3feea519.js.map": "/treasurehunt/static/js/main.3feea519.js.map",
     "787.a3a57bc5.chunk.js.map": "/treasurehunt/static/js/787.a3a57bc5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dfa56f0c.css",
-    "static/js/main.49796abc.js"
+    "static/js/main.3feea519.js"
   ]
 }
