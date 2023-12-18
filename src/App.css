@@ -1,14 +1,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ultra&display=swap');
-
+@font-face {
+  font-family: CamptonBold;
+  src: url('./assets/fonts/Rene Bieder - Campton Bold.otf');
+}
+@font-face {
+  font-family: CamptonMedium;
+  src: url('./assets/fonts/Rene Bieder - Campton Medium.otf');
+}
 *{
   margin:0;
 }
 h1,h2,h3, h4, h5, h6{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'CamptonBold', sans-serif;
 }
 p,input,button{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'CamptonMedium', sans-serif;
 }
 
 .App {
@@ -26,26 +33,7 @@ p,input,button{
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+  background:'white';
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

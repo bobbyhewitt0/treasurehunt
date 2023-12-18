@@ -34,7 +34,7 @@ function Input({background, textColor, value, onChange, }) {
     <OuterContainer>
     <Link href="tel:07507144826">
     <Container>
-    <Text>Call for help</Text>
+    <Text>Call the North Pole help line</Text>
     </Container>
     </Link>
     </OuterContainer>

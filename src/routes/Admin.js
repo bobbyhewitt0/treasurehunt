@@ -17,12 +17,20 @@ function StarterPage({database}) {
     const rootRef = ref(database, `/scores`);
     const startingData = getDefaultData()
     set(rootRef, startingData)
-    
+  }
+
+  const onEmptyScores = () => {
+    const rootRef = ref(database, `/scores`);
+    const startingData = getDefaultData()
+    set(rootRef, null)
   }
 
   return (
     <Container>
-      <Button text="Reset game" color="red" onSubmit={onClick}/>      
+      <Button text="Start game" onSubmit={onClick}/>     
+      <div style={{marginTop:'24px'}} >
+        <Button text="Stop game" onSubmit={onEmptyScores}/>      
+      </div>
     </Container>
   );
 }

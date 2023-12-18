@@ -25,6 +25,8 @@ const HeaderContainer = styled.div`
   align-items:flex-start;
   flex:1;
   margin-top:12px;
+  padding: 0 12px;
+  box-sizing:border-box;
 
 `
 const OuterContainer = styled.div`
@@ -33,99 +35,111 @@ width:100%;
 
 `
 const Column = styled.div`
+flex:1.5;
   display:flex;
-  flex:1;
+  
 `
 
-const Position = styled.p`
-// font-weight:bold;
-text-align:left;
-width:100%;
-opacity:0.4;
-`
-
-const Time = styled.p`
-// font-weight:bold;
-text-align:center;
-width:100%;
-opacity:0.4;
-`
 
 const Penalties = styled.p`
   // font-weight:bold;
+  // text-align:right;
+font-size:0.75em;
+  width:100%;
+  opacity:0.4;
+`
+
+const RightColumn = styled.div`
+width:50px:
+  display:flex;
+  
+  
+  align-items:flex-end;
+  justify-content:flex-end;
+`
+
+
+
+
+const TableHeader = styled.p`
+  // font-weight:bold;
+  // text-align:right;
+font-size:0.75em;
+  width:100%;
+  opacity:0.4;
+
+`
+const TableHeaderRight = styled.p`
+  // font-weight:bold;
   text-align:right;
+font-size:0.75em;
   width:100%;
   opacity:0.4;
 
 `
 
-const Heading = styled.h2`
-margin-bottom:24px;
-  text-align:center;
-  
-`
 
 
 
 function OtherScores({scores, time, myTeam}) {
-  const [currentTime, setCurrentTime ] = useState()
+
+  
   const [augmentedScores, setAugmentedScores] = useState()
 
   function calculateScores(){
-    if (!scores) return
+    if (!scores) return 
+    // delete scores.red
     
-    let currentTime = (new Date()).getTime()
     let teams = scores ? Object.keys(scores) : []
     let newScores = []
     for (var i = 0; i < teams.length; i++){
       let score = scores[teams[i]]
-      let totalGameTime = score.startTime < currentTime ? 
-        score.totalTime + (currentTime - score.startTime) :
-        score.totalTime
-      let timeString = formatTime(totalGameTime)
+      let totalGameTime = score.startTime < time ? 
+        score.totalTime + (time - score.startTime) :
+        score.totalTime 
+      let adjustedGameTime = totalGameTime - (score.bonus * 1000 * 60) + (score.incorrect * 1000 * 60)
+      let formattedTime = formatTime(totalGameTime)
+      let formattedAdjustedGameTime = formatTime(adjustedGameTime)
       newScores.push({
         ...score,
         totalGameTime,
-        formattedTime: timeString,
+        adjustedGameTime,
+        formattedTime: formattedTime,
+        formattedAdjustedGameTime,
         team: teams[i]
       })
     }
-    newScores = newScores.sort((a,b) => a.totalGameTime - b.totalGameTime)
+    newScores = newScores.sort((a,b) => a.adjustedGameTime - b.adjustedGameTime)
     setAugmentedScores(newScores)
   }
 
   useEffect(() => {
+    // console.log('scores', scores)
     calculateScores()
-  },[scores])
+  },[scores, time])
 
 
 
-  const intervalRef = useRef(null)
-  useEffect(() => {
-   
-   
-   
-      
-      calculateScores()
-      
-   
-  },[time])
-
+  
   // let teams = augmentedScores ? Object.keys(augmentedScores) : []
 
   return (
     <OuterContainer>
     {/*<Heading>Leaderboard</Heading>*/}
     <HeaderContainer>
+      
+       
+      
       <Column>
-        <Position>Position</Position>
+        <TableHeader>Position</TableHeader>
       </Column>
       <Column>
-        <Time>Time</Time>
+        <TableHeader>Total time</TableHeader>
       </Column>
-      <Column>
-        <Penalties>Penalties</Penalties>
-      </Column>
+      
+      <RightColumn>
+        <TableHeaderRight>Status</TableHeaderRight>
+      </RightColumn>
     </HeaderContainer>
     <Container>
 
@@ -134,7 +148,7 @@ function OtherScores({scores, time, myTeam}) {
       const color = colors[score.team]
       if (score){
         return(
-          <TeamLineItem key={i} position={i+1} color={color} score={score} currentTime={time}/>
+          <TeamLineItem isMyTeam={myTeam === score.team} key={i} position={i+1} color={color} {...score} currentTime={time}/>
         )
       } else {
         return <div key={i}/>

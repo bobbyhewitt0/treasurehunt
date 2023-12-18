@@ -2,18 +2,18 @@ import React, {useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const ButtonComponent = styled.button`
-  height:64px;
+  height:56px;
   width:100%;
   background:white;
   outline: none;
-  box-shadow:2px 2px 30px #00000033 ;
+  
   border:none;
-  border-radius:8px;
-  font-size:20px;
+  border-radius:20px;
+  font-size:16px;
   padding:12px;
   box-sizing:border-box;
   color: white;
-  margin-top:24px;
+  margin-top:16px;
 `
 
 const ButtonText = styled.p`
@@ -21,12 +21,16 @@ const ButtonText = styled.p`
 `
 
 
-function Button({color, textColor, text, isDisabled, onSubmit}) {
+function Button({color, textColor, text, team, secondary, isDisabled, onSubmit}) {
 
 
   return (
     
-     <ButtonComponent placeholder="Type your answer" style={{background:color, opacity: isDisabled ? 0.33: 1, color: textColor}} onClick={onSubmit}>
+     <ButtonComponent placeholder="Type your answer" style={{
+        background: secondary ? 'white' : isDisabled ? "#EAEAEA" : color ? color.dark : '#CA4035', 
+        color: secondary? '#CA4035' :  isDisabled ? "#717171" : color ? color.text : 'white',
+        border: secondary ? color ? `1ps solid ${color.dark}` : '1px solid #CA4035' : 'none'
+      }} onClick={() => onSubmit(team)}>
       {text || 'Submit'}
      </ButtonComponent>
       

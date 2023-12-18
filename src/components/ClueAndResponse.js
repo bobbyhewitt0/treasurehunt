@@ -13,7 +13,7 @@ const Container = styled.div`
 
 
 const HeaderImageContainer = styled.div`
-  margin-bottom:-60px;
+  margin-bottom:-20px;
   display:flex;
   align-items:center;
   z-index:-1;
@@ -43,35 +43,65 @@ const Background = styled.div`
 `
 
 const HeaderImage = styled.img`
-  width:50%;
+  width:70%;
   z-index:-1;
-  max-width:300px;
+  max-width:400px;
 
   margin:auto;
   
 `
 
+const QuestionText = styled.p`
+ line-height:1.4em; 
+ // font-weight:bold;
+
+ letter-spacing:0.5px;
+`
+
+
+const ClueButtonContainer = styled.div`
+  
+  opacity:0.5;
+  
+  margin:32px 0;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+
+`
+
 function ClueAndResponse({
   team, 
   time,
+  displayClue,
+  getClue,
   inputValue, 
+  displayMap,
+  setOverlay,
   setInputValue, 
   firstClues,
   colors,
   myScore,
   answers,
   onSubmit
-
 }) {
-
+  
   return (
     <Container >
       <HeaderImageContainer>
-        <HeaderImage src={require('../assets/santa.png')} />
+        <HeaderImage src={require('../assets/bg.png')} />
       </HeaderImageContainer>
-      <Clue colors={colors} firstClues={firstClues} myScore={myScore} team={team}answers={answers}/>
-      <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
-      <Button isDisabled={inputValue.length === 0}color={colors.background} textColor={colors.text} onSubmit={onSubmit}/>
+      <Clue colors={colors} setOverlay={setOverlay} color={colors} getClue={getClue} displayClue={displayClue} displayMap={displayMap} myScore={myScore} team={team} answers={answers}/>
+      <ClueButtonContainer onClick={ () => {
+        setOverlay({eyebrow: "Santa Satos'",header:"strugglers support", isClueOverlay:true}) 
+      }}>
+        <QuestionText>Need help with the question?</QuestionText>
+        <img style={{width:'24px', height: '24px'}}src={require('../assets/clue.png')} />
+      </ClueButtonContainer>
+      <Input incorrectValue={myScore.incorrect} value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+      <Button isDisabled={inputValue.length === 0} color={colors}  onSubmit={onSubmit}/>
+      
     </Container>
   );
 }
